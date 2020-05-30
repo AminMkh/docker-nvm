@@ -64,7 +64,8 @@ ENV LC_ALL C.UTF-8
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 
-
+# cypress requirements: https://docs.cypress.io/guides/guides/continuous-integration.html#Advanced-setup
+RUN apt-get install -y libgtk2.0-0 libgtk-3-0 libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
 # set out application folder
 WORKDIR /project
 
