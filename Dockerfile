@@ -1,7 +1,7 @@
 
 # set the base image to Debian
 # https://hub.docker.com/_/debian/
-FROM ubuntu:16.04
+FROM ubuntu:latest
 RUN apt-get update
 
 # Replace shell with bash so we can source files
@@ -24,10 +24,11 @@ RUN apt-get install -y -q --no-install-recommends \
         wget 
 
 ENV NVM_DIR /usr/local/nvm
-ENV NODE_VERSION 9
+RUN mkdir $NVM_DIR
+ENV NODE_VERSION 12
 
 # Install nvm with node and npm
-RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash
+RUN curl -o- curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 RUN source $NVM_DIR/nvm.sh \
     && nvm install $NODE_VERSION \
     && nvm alias default $NODE_VERSION \
